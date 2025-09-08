@@ -1,9 +1,8 @@
 buildscript {
     repositories {
-		maven { url = uri("https://maven.aliyun.com/repository/google") }
-		maven { url = uri("https://maven.aliyun.com/repository/central") }
-		maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
 		google()
+		mavenCentral()
+		gradlePluginPortal()
 	}
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
@@ -12,12 +11,9 @@ buildscript {
 
 allprojects {
     repositories {
-		maven { url = uri("https://maven.aliyun.com/repository/google") }
-		maven { url = uri("https://maven.aliyun.com/repository/central") }
-		maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
-		maven { url = uri("https://maven.aliyun.com/repository/public") }
-		maven { url = uri("https://jitpack.io") }
 		google()
+		mavenCentral()
+		//maven { url = uri("https://jitpack.io") }
 		mavenLocal()
 	}
 }
