@@ -41,6 +41,6 @@ android {
 
 dependencies {
     // some dependencies
-    implementation 'com.squareup.picasso:picasso:2.4.0'
+    //implementation 'com.squareup.picasso:picasso:2.4.0'
 
 }

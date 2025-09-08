@@ -18,7 +18,7 @@ import java.util.Iterator;
 import de.clemensbartz.android.launcher.daos.SharedPreferencesDAO;
 import de.clemensbartz.android.launcher.listeners.DockOnCreateContextMenuListener;
 import de.clemensbartz.android.launcher.models.ApplicationModel;
-import de.clemensbartz.android.launcher.tasks.LoadApplicationModelIconIntoImageViewTask;
+import de.clemensbartz.android.launcher.util.SimpleIconLoader;
 import de.clemensbartz.android.launcher.util.IntentUtil;
 
 /* loaded from: classes.dex */
@@ -125,11 +125,7 @@ public final class DockController {
 		ImageView imageView = this.dockItems.get(i);
 		imageView.setTag(applicationModel);
 		imageView.setContentDescription(applicationModel.label);
-		PackageManager packageManager = this.packageManagerWeakReference.get();
-		if (packageManager != null) {
-			new LoadApplicationModelIconIntoImageViewTask(imageView,applicationModel,packageManager,this.defaultDrawable).executeOnExecutor(
-					AsyncTask.THREAD_POOL_EXECUTOR,new Integer[0]);
-		}
+		SimpleIconLoader.loadIcon(applicationModel, imageView, this.defaultDrawable);
 	}
 
 	public void clearIndex(int i) {

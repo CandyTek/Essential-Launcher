@@ -26,7 +26,7 @@ import de.clemensbartz.android.launcher.R;
 import de.clemensbartz.android.launcher.comparators.LocaledStringComparator;
 import de.clemensbartz.android.launcher.models.ApplicationModel;
 import de.clemensbartz.android.launcher.util.LocaleUtil;
-import de.clemensbartz.android.launcher.util.PicassoIconLoader;
+import de.clemensbartz.android.launcher.util.SimpleIconLoader;
 
 /* loaded from: classes.dex */
 public final class DrawerListAdapter extends ArrayAdapter<ApplicationModel> implements SearchView.OnQueryTextListener, SectionIndexer {
@@ -69,7 +69,7 @@ public final class DrawerListAdapter extends ArrayAdapter<ApplicationModel> impl
 		if (viewHolder != null && viewHolder.icon != null && viewHolder.name != null) {
 			viewHolder.icon.setContentDescription(item.label);
 			viewHolder.name.setText(item.label);
-			PicassoIconLoader.loadIcon(item, viewHolder.icon, this.defaultDrawable);
+			SimpleIconLoader.loadIcon(item, viewHolder.icon, this.defaultDrawable);
 		}
 		return view;
 	}

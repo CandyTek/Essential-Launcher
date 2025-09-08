@@ -33,7 +33,6 @@ import de.clemensbartz.android.launcher.tasks.FilterDrawerListAdapterTask;
 import de.clemensbartz.android.launcher.tasks.LoadDrawerListAdapterTask;
 import de.clemensbartz.android.launcher.tasks.LoadSharedPreferencesDAOTask;
 import de.clemensbartz.android.launcher.util.IntentUtil;
-import de.clemensbartz.android.launcher.util.PicassoIconLoader;
 import de.clemensbartz.android.launcher.util.StrictModeUtil;
 import de.clemensbartz.android.launcher.util.ThemeUtil;
 
@@ -52,7 +51,6 @@ public final class Launcher extends Activity {
 		super.onCreate(bundle);
 		setContentView(R.layout.launcher);
 		StrictModeUtil.adjustStrictMode();
-		PicassoIconLoader.initialize(this);
 		int actionBarHeight = ThemeUtil.getActionBarHeight(this);
 		this.sharedPreferencesDAO = SharedPreferencesDAO.getInstance(getPreferences(0));
 		this.viewController = new ViewController((ViewFlipper) findViewById(R.id.vsLauncher));
