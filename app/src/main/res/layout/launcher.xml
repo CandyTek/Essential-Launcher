@@ -28,6 +28,7 @@
 			android:smoothScrollbar="false"
 			android:stretchMode="columnWidth"
 			android:verticalSpacing="5dp"
+			android:fastScrollEnabled="true"
 			/>
 	</LinearLayout>
 
@@ -45,6 +46,8 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:clipToPadding="true"
+			android:fastScrollEnabled="true"
+
 			android:paddingLeft="10dp"
 			android:paddingTop="10dp"
 			android:paddingRight="10dp"
