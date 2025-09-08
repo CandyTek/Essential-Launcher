@@ -160,9 +160,6 @@ public final class Launcher extends Activity {
 			viewController.setActionBarMenu(this.actionBarMenu);
 		}
 		getMenuInflater().inflate(R.menu.actionbar_options_menu,menu);
-		menu.findItem(R.id.abm_choose_widget).setVisible(false);
-		menu.findItem(R.id.abm_layout_widget).setVisible(false);
-		menu.findItem(R.id.abm_remove_widget).setVisible(false);
 		menu.findItem(R.id.abm_show_all_dock_icons).setVisible(false);
 		MenuItem findItem = menu.findItem(R.id.app_bar_search);
 		View actionView = findItem.getActionView();
@@ -174,7 +171,7 @@ public final class Launcher extends Activity {
 			menu.findItem(R.id.abm_show_hidden).setChecked(this.drawerListAdapter.isShowingHiddenApps());
 		}
 		if (this.viewController != null) {
-			menu.findItem(R.id.abm_grid_toggle).setChecked(this.viewController.getCurrentDetailIndex() == 1);
+			menu.findItem(R.id.abm_grid_toggle).setChecked(this.viewController.getCurrentDetailIndex() == ViewController.GRID_ID);
 		}
 		return true;
 	}
@@ -190,9 +187,9 @@ public final class Launcher extends Activity {
 				if (viewController2 == null || this.sharedPreferencesDAO == null) {
 					return super.onOptionsItemSelected(menuItem);
 				}
-				boolean z = viewController2.getCurrentDetailIndex() == 1;
+				boolean z = viewController2.getCurrentDetailIndex() == ViewController.GRID_ID;
 				menuItem.setChecked(!z);
-				int i = !z ? 1 : 2;
+				int i = !z ? ViewController.GRID_ID : ViewController.LIST_ID;
 				this.viewController.setCurrentDetailIndex(i);
 				this.sharedPreferencesDAO.putInt(ViewController.KEY_DRAWER_LAYOUT,i);
 				this.viewController.showDetail();

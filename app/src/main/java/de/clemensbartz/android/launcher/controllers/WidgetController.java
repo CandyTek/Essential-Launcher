@@ -106,7 +106,8 @@ public final class WidgetController {
 		this.sharedPreferencesDAO = sharedPreferencesDAO;
 		this.launcher = launcher;
 		this.appWidgetManager = AppWidgetManager.getInstance(launcher);
-		this.appWidgetHost = new AppWidgetHost(launcher,R.id.flWidget);
+		// this.appWidgetHost = new AppWidgetHost(launcher,R.id.flWidget);
+		this.appWidgetHost = null;
 	}
 
 	public void startListening() {
@@ -138,7 +139,8 @@ public final class WidgetController {
 	}
 
 	public void addHostView(int i) {
-		FrameLayout frameLayout = (FrameLayout) this.launcher.findViewById(R.id.flWidget);
+		// FrameLayout frameLayout = (FrameLayout) this.launcher.findViewById(R.id.flWidget);
+		FrameLayout frameLayout = null;
 		frameLayout.removeAllViews();
 		AppWidgetProviderInfo appWidgetInfo = this.appWidgetManager.getAppWidgetInfo(i);
 		if (appWidgetInfo != null) {
@@ -156,9 +158,11 @@ public final class WidgetController {
 	}
 
 	public void adjustWidget(int i) {
-		View findViewById = this.launcher.findViewById(R.id.bottomFiller);
+		// View findViewById = this.launcher.findViewById(R.id.bottomFiller);
+		View findViewById = null;
 		View topFiller = getTopFiller();
-		FrameLayout frameLayout = (FrameLayout) this.launcher.findViewById(R.id.flWidget);
+		// FrameLayout frameLayout = (FrameLayout) this.launcher.findViewById(R.id.flWidget);
+		FrameLayout frameLayout = null;
 		ViewGroup.LayoutParams layoutParams = findViewById.getLayoutParams();
 		ViewGroup.LayoutParams layoutParams2 = topFiller.getLayoutParams();
 		ViewGroup.LayoutParams layoutParams3 = frameLayout.getLayoutParams();
@@ -186,7 +190,8 @@ public final class WidgetController {
 	}
 
 	public void bindWidget(ComponentName componentName,ComponentName componentName2) {
-		FrameLayout frameLayout = (FrameLayout) this.launcher.findViewById(R.id.flWidget);
+		// FrameLayout frameLayout = (FrameLayout) this.launcher.findViewById(R.id.flWidget);
+		FrameLayout frameLayout = null;
 		int allocateAppWidgetId = this.appWidgetHost.allocateAppWidgetId();
 		if (this.appWidgetManager.bindAppWidgetIdIfAllowed(allocateAppWidgetId,componentName)) {
 			configureWidget(allocateAppWidgetId,componentName2);
@@ -223,7 +228,8 @@ public final class WidgetController {
 	}
 
 	public void createWidget(int i) {
-		FrameLayout frameLayout = (FrameLayout) this.launcher.findViewById(R.id.flWidget);
+		// FrameLayout frameLayout = (FrameLayout) this.launcher.findViewById(R.id.flWidget);
+		FrameLayout frameLayout = null;
 		int i2 = this.sharedPreferencesDAO.getInt(KEY_APPWIDGET_ID,-1);
 		if (i2 > -1) {
 			this.appWidgetHost.deleteAppWidgetId(i2);
@@ -231,11 +237,13 @@ public final class WidgetController {
 			adjustWidget(-1);
 		}
 		this.sharedPreferencesDAO.putInt(KEY_APPWIDGET_ID,i);
-		MenuItem actionBarMenuItem = this.launcher.getActionBarMenuItem(R.id.abm_remove_widget);
+		// MenuItem actionBarMenuItem = this.launcher.getActionBarMenuItem(R.id.abm_remove_widget);
+		MenuItem actionBarMenuItem = null;
 		if (actionBarMenuItem != null) {
 			actionBarMenuItem.setVisible(i > -1);
 		}
-		MenuItem actionBarMenuItem2 = this.launcher.getActionBarMenuItem(R.id.abm_layout_widget);
+		// MenuItem actionBarMenuItem2 = this.launcher.getActionBarMenuItem(R.id.abm_layout_widget);
+		MenuItem actionBarMenuItem2 = null;
 		if (actionBarMenuItem2 != null) {
 			actionBarMenuItem2.setVisible(i > -1);
 		}
@@ -243,7 +251,8 @@ public final class WidgetController {
 	}
 
 	public View getTopFiller() {
-		return this.launcher.findViewById(R.id.topFiller);
+		// return this.launcher.findViewById(R.id.topFiller);
+		return null;
 	}
 
 	public void requestWidgetChoosing() {

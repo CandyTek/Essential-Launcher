@@ -8,9 +8,9 @@ import de.clemensbartz.android.launcher.R;
 
 /* loaded from: classes.dex */
 public final class ViewController {
-	public static final int GRID_ID = 1;
+	public static final int GRID_ID = 0;
 	public static final String KEY_DRAWER_LAYOUT = "drawerLayout";
-	public static final int LIST_ID = 2;
+	public static final int LIST_ID = 1;
 	private ActionBar actionBar;
 	private Menu actionBarMenu;
 	private int currentDetailIndex = GRID_ID;
@@ -21,7 +21,7 @@ public final class ViewController {
 	}
 
 	private boolean isValidDetailIndex(int i) {
-		return i >= 1 && this.viewFlipper.getChildCount() > i - 1;
+		return i >= 0 && this.viewFlipper.getChildCount() > i -1;
 	}
 
 	private void switchTo(int i) {
@@ -51,7 +51,7 @@ public final class ViewController {
 		}
 		Menu menu = this.actionBarMenu;
 		if (menu != null) {
-			menu.findItem(R.id.abm_grid_toggle).setChecked(i == 1);
+			menu.findItem(R.id.abm_grid_toggle).setChecked(i == ViewController.GRID_ID);
 		}
 	}
 
