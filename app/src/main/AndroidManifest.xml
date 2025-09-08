@@ -32,6 +32,8 @@
 		android:required="false" />
 
 	<uses-permission android:name="android.permission.BIND_APPWIDGET" />
+	<uses-permission android:name="android.permission.DELETE_PACKAGES" />
+	<uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
 	<application
 		android:allowBackup="false"
 		android:appCategory="productivity"

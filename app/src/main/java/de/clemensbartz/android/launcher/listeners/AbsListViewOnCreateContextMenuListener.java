@@ -65,23 +65,26 @@ public final class AbsListViewOnCreateContextMenuListener implements View.OnCrea
 		if (item.packageName != null) {
 			contextMenu.add(0,1,0,R.string.showAppInfo).setIntent(IntentUtil.newAppDetailsIntent(item.packageName));
 		}
-		SubMenu addSubMenu = contextMenu.addSubMenu(R.string.pinApp);
-		// 使用 chatgpt 修复反编译 int i 报错
-		for (int i = 0;i < 7;i++) {
-			final int index = i; // 给匿名类用的副本
-			addSubMenu.add(0,ITEM_PINTO,0,Integer.toString(index + 1))
-					.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-						@Override
-						public boolean onMenuItemClick(MenuItem menuItem) {
-							DockController dockController2 = dockController;
-							if (dockController2 == null) {
-								return false;
-							}
-							dockController2.updateDock(index,item); // 使用副本
-							return true;
-						}
-					});
+		if (item.packageName != null) {
+			contextMenu.add(0,2,0,"卸载").setIntent(IntentUtil.newAppUninstallIntent(item.packageName));
 		}
+		// SubMenu addSubMenu = contextMenu.addSubMenu(R.string.pinApp);
+		// 使用 chatgpt 修复反编译 int i 报错
+		// for (int i = 0;i < 7;i++) {
+		// 	final int index = i; // 给匿名类用的副本
+		// 	addSubMenu.add(0,ITEM_PINTO,0,Integer.toString(index + 1))
+		// 			.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+		// 				@Override
+		// 				public boolean onMenuItemClick(MenuItem menuItem) {
+		// 					DockController dockController2 = dockController;
+		// 					if (dockController2 == null) {
+		// 						return false;
+		// 					}
+		// 					dockController2.updateDock(index,item); // 使用副本
+		// 					return true;
+		// 				}
+		// 			});
+		// }
 		if (drawerController != null) {
 			MenuItem add = contextMenu.add(0,ITEM_TOGGLE_HIDDEN,0,R.string.hidden);
 			add.setCheckable(true);

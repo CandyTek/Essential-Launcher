@@ -19,10 +19,11 @@ import java.util.Iterator;
 import de.clemensbartz.android.launcher.daos.SharedPreferencesDAO;
 import de.clemensbartz.android.launcher.listeners.DockOnCreateContextMenuListener;
 import de.clemensbartz.android.launcher.models.ApplicationModel;
-import de.clemensbartz.android.launcher.util.SimpleIconLoader;
+// import de.clemensbartz.android.launcher.util.SimpleIconLoader;
 import de.clemensbartz.android.launcher.util.IntentUtil;
 
 /* loaded from: classes.dex */
+@Deprecated
 public final class DockController {
 	private static final int DENSITY_XXXHIGH = 640;
 	public static final String KEY_IS_SHOWING_ALL_DOCK_ICONS = "isShowingAllDockIcons";
@@ -73,7 +74,8 @@ public final class DockController {
 												context.startActivity(newAppMainIntent);
 											}
 											catch (Exception e) {
-												Toast.makeText(context.getApplicationContext(),"出错"+e.getMessage(),Toast.LENGTH_SHORT).show();
+												Toast.makeText(context.getApplicationContext(),"出错" + e.getMessage(),Toast.LENGTH_SHORT)
+														.show();
 											}
 										}
 									}
@@ -131,7 +133,8 @@ public final class DockController {
 		ImageView imageView = this.dockItems.get(i);
 		imageView.setTag(applicationModel);
 		imageView.setContentDescription(applicationModel.label);
-		SimpleIconLoader.loadIcon(applicationModel, imageView, this.defaultDrawable);
+		// 无需在设置图标加载器了
+		// SimpleIconLoader.loadIcon(applicationModel, imageView, this.defaultDrawable);
 	}
 
 	public void clearIndex(int i) {

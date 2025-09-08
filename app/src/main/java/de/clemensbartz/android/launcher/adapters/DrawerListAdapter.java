@@ -2,6 +2,7 @@ package de.clemensbartz.android.launcher.adapters;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +21,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.RejectedExecutionException;
 
 import de.clemensbartz.android.launcher.BuildConfig;
 import de.clemensbartz.android.launcher.R;
 import de.clemensbartz.android.launcher.comparators.LocaledStringComparator;
 import de.clemensbartz.android.launcher.models.ApplicationModel;
+import de.clemensbartz.android.launcher.tasks.LoadApplicationModelIconIntoImageViewTask;
 import de.clemensbartz.android.launcher.util.LocaleUtil;
 import de.clemensbartz.android.launcher.util.SimpleIconLoader;
+// import de.clemensbartz.android.launcher.util.SimpleIconLoader;
 
 /* loaded from: classes.dex */
 public final class DrawerListAdapter extends ArrayAdapter<ApplicationModel> implements SearchView.OnQueryTextListener, SectionIndexer {
@@ -69,7 +73,17 @@ public final class DrawerListAdapter extends ArrayAdapter<ApplicationModel> impl
 		if (viewHolder != null && viewHolder.icon != null && viewHolder.name != null) {
 			viewHolder.icon.setContentDescription(item.label);
 			viewHolder.name.setText(item.label);
-			SimpleIconLoader.loadIcon(item, viewHolder.icon, this.defaultDrawable);
+			// SimpleIconLoader.loadIcon(item, viewHolder.icon, this.defaultDrawable);
+			
+			// 这个方法内存占用会多一些，Android15 多6mb占用，优势是能刷新图标，不用初始化，不用解码
+			LoadApplicationModelIconIntoImageViewTask loadApplicationModelIconIntoImageViewTask = new LoadApplicationModelIconIntoImageViewTask(
+					viewHolder.icon,item,getContext().getPackageManager(),this.defaultDrawable);
+			try {
+				loadApplicationModelIconIntoImageViewTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,new Integer[0]);
+			}
+			catch (RejectedExecutionException unused) {
+				loadApplicationModelIconIntoImageViewTask.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR,new Integer[0]);
+			}
 		}
 		return view;
 	}

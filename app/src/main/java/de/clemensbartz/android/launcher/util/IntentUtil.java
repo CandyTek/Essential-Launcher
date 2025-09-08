@@ -18,15 +18,22 @@ public final class IntentUtil {
 
 	public static Intent newAppDetailsIntent(String str) {
 		Intent intent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-		intent.setFlags(268435456);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.setData(Uri.parse("package:" + str));
+		return intent;
+	}
+
+	public static Intent newAppUninstallIntent(String packageName) {
+		Intent intent = new Intent(Intent.ACTION_DELETE);
+		intent.setData(Uri.parse("package:" + packageName));
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		return intent;
 	}
 
 	public static Intent newAppMainIntent(String str,String str2) {
 		ComponentName componentName = new ComponentName(str,str2);
 		Intent intent = new Intent("android.intent.action.MAIN");
-		intent.setFlags(268435456);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.setComponent(componentName);
 		return intent;
 	}
