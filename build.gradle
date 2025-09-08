@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+		maven { url = uri("https://maven.aliyun.com/repository/google") }
+		maven { url = uri("https://maven.aliyun.com/repository/central") }
+		maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+		google()
+	}
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2'
+    }
+}
+
+allprojects {
+    repositories {
+		maven { url = uri("https://maven.aliyun.com/repository/google") }
+		maven { url = uri("https://maven.aliyun.com/repository/central") }
+		maven { url = uri("https://maven.aliyun.com/repository/jcenter") }
+		maven { url = uri("https://maven.aliyun.com/repository/public") }
+		maven { url = uri("https://jitpack.io") }
+		google()
+		mavenLocal()
+	}
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

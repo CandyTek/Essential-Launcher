@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">Essential Launcher</string>
+    <string name="chooseWidget">選擇小部件…</string>
+    <string name="hidden">隱藏</string>
+    <string name="layoutWidget">佈局小部件…</string>
+    <string name="openDrawer">顯示所有應用</string>
+    <string name="pinApp">加入碼頭…</string>
+    <string name="removeWidget">刪除小部件</string>
+    <string name="search">搜索</string>
+    <string name="showAllDockIcons">顯示所有停靠圖標</string>
+    <string name="showAppInfo">顯示應用信息</string>
+    <string name="showAsGrid">顯示為網格</string>
+    <string name="showHiddenApps">顯示隱藏</string>
+    <string name="unpinnedDockItem">未固定的碼頭項目</string>
+    <string name="widgetLayoutBottomHalf">降低1/2</string>
+    <string name="widgetLayoutBottomQuarter">降低1/4</string>
+    <string name="widgetLayoutBottomThird">降低1/3</string>
+    <string name="widgetLayoutCenter">中間1/2</string>
+    <string name="widgetLayoutFull">全屏</string>
+    <string name="widgetLayoutTopHalf">上1/2</string>
+    <string name="widgetLayoutTopQuarter">上1/4</string>
+    <string name="widgetLayoutTopThird">上1/3</string>
+</resources>

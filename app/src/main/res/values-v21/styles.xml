@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="API21ActivityStyle" parent="@android:style/Theme.DeviceDefault.Wallpaper">
+        <item name="android:actionBarStyle">@style/EssentialLauncherActionBar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+    <style name="EssentialLauncherActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="API17ActivityStyle" parent="@android:style/Theme.Holo.Wallpaper">
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+</resources>

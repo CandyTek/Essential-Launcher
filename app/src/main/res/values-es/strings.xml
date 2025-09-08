@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">Essential Launcher</string>
+    <string name="chooseWidget">Elegir widget…</string>
+    <string name="hidden">Ocultar</string>
+    <string name="layoutWidget">Alinear widget…</string>
+    <string name="openDrawer">Mostrar todas las aplicaciones</string>
+    <string name="pinApp">Añadir al muelle…</string>
+    <string name="removeWidget">Quitar widget</string>
+    <string name="search">Búsqueda</string>
+    <string name="showAllDockIcons">Mostrar todos los iconos del muelle</string>
+    <string name="showAppInfo">Mostrar información de la aplicación</string>
+    <string name="showAsGrid">Mostrar como cuadrícula</string>
+    <string name="showHiddenApps">Mostrar oculto</string>
+    <string name="unpinnedDockItem">Elemento de muelle sin clavijas</string>
+    <string name="widgetLayoutBottomHalf">Inferior 1/2</string>
+    <string name="widgetLayoutBottomQuarter">Inferior 1/4</string>
+    <string name="widgetLayoutBottomThird">Inferior 1/3</string>
+    <string name="widgetLayoutCenter">Medio 1/2</string>
+    <string name="widgetLayoutFull">Pantalla completa</string>
+    <string name="widgetLayoutTopHalf">Superior 1/2</string>
+    <string name="widgetLayoutTopQuarter">Superior 1/4</string>
+    <string name="widgetLayoutTopThird">Superior 1/3</string>
+</resources>

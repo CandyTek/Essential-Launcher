@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="20"
+    android:versionName="2.2"
+    android:compileSdkVersion="29"
+    android:compileSdkVersionCodename="10"
+    package="de.clemensbartz.android.launcher"
+    platformBuildVersionCode="29"
+    platformBuildVersionName="10">
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="29"/>
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.software.home_screen"
+        android:required="true"/>
+    <uses-feature
+        android:name="android.software.app_widgets"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.ram.low"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.ram.normal"
+        android:required="false"/>
+    <uses-permission android:name="android.permission.BIND_APPWIDGET"/>
+    <application
+        android:label="@string/appName"
+        android:icon="@drawable/ic_launcher"
+        android:allowBackup="false"
+        android:supportsRtl="true"
+        android:appCategory="productivity">
+        <activity
+            android:theme="@style/API29ActivityStyle"
+            android:label="@string/appName"
+            android:name="de.clemensbartz.android.launcher.Launcher"
+            android:clearTaskOnLaunch="true"
+            android:stateNotNeeded="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:configChanges="screenSize|orientation|keyboardHidden"
+            android:resizeableActivity="false"
+            android:visibleToInstantApps="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.HOME"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
