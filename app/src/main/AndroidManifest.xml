@@ -23,7 +23,10 @@
 		android:required="false" />
 	<uses-feature
 		android:name="android.hardware.ram.low"
-		android:required="false" />
+		android:required="true" />
+<!-- 	<uses-feature -->
+<!-- 		android:name="android.hardware.ram.low" -->
+<!-- 		android:required="false" /> -->
 	<uses-feature
 		android:name="android.hardware.ram.normal"
 		android:required="false" />
@@ -34,12 +37,15 @@
 		android:appCategory="productivity"
 		android:icon="@drawable/ic_launcher"
 		android:label="@string/appName"
+		android:largeHeap="false"
+		android:hardwareAccelerated="false"
+		android:usesCleartextTraffic="false"
 		android:supportsRtl="true">
 		<activity
 			android:name="de.clemensbartz.android.launcher.Launcher"
 			android:configChanges="screenSize|orientation|keyboardHidden"
 			android:label="@string/appName"
-			android:launchMode="singleTask"
+			android:launchMode="singleTop"
 			android:resizeableActivity="false"
 			android:stateNotNeeded="false"
 			android:theme="@style/API29ActivityStyle"

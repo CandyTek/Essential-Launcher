@@ -106,7 +106,7 @@ public final class Launcher extends Activity {
 
 	@Override // android.app.Activity
 	public void onBackPressed() {
-		finish();
+		// finish();
 	}
 
 	@Override // android.app.Activity, android.content.ComponentCallbacks
@@ -117,11 +117,11 @@ public final class Launcher extends Activity {
 	@Override // android.app.Activity
 	protected void onResume() {
 		super.onResume();
-		ViewController viewController = this.viewController;
-		if (viewController != null) {
-			viewController.setActionBar(getActionBar());
-			this.viewController.showDetail();
-		}
+		// ViewController viewController = this.viewController;
+		// if (viewController != null) {
+		// 	viewController.setActionBar(getActionBar());
+		// 	this.viewController.showDetail();
+		// }
 	}
 
 	@Override // android.app.Activity
