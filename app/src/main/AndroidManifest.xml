@@ -24,9 +24,9 @@
 	<uses-feature
 		android:name="android.hardware.ram.low"
 		android:required="true" />
-<!-- 	<uses-feature -->
-<!-- 		android:name="android.hardware.ram.low" -->
-<!-- 		android:required="false" /> -->
+	<!-- 	<uses-feature -->
+	<!-- 		android:name="android.hardware.ram.low" -->
+	<!-- 		android:required="false" /> -->
 	<uses-feature
 		android:name="android.hardware.ram.normal"
 		android:required="false" />
@@ -35,12 +35,13 @@
 	<application
 		android:allowBackup="false"
 		android:appCategory="productivity"
+		android:extractNativeLibs="false"
+		android:hardwareAccelerated="false"
 		android:icon="@drawable/ic_launcher"
 		android:label="@string/appName"
 		android:largeHeap="false"
-		android:hardwareAccelerated="false"
-		android:usesCleartextTraffic="false"
-		android:supportsRtl="true">
+		android:supportsRtl="false"
+		android:usesCleartextTraffic="false">
 		<activity
 			android:name="de.clemensbartz.android.launcher.Launcher"
 			android:configChanges="screenSize|orientation|keyboardHidden"
@@ -49,8 +50,7 @@
 			android:resizeableActivity="false"
 			android:stateNotNeeded="false"
 			android:theme="@style/API29ActivityStyle"
-			android:visibleToInstantApps="false"
-			>
+			android:visibleToInstantApps="false">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 

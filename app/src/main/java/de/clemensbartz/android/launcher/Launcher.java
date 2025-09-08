@@ -46,7 +46,7 @@ public final class Launcher extends Activity {
 
 	@Override // android.app.Activity
 	protected void onCreate(Bundle bundle) {
-		Drawable drawable;
+		Drawable drawable = null;
 		ThemeUtil.setTheme(this);
 		super.onCreate(bundle);
 		setContentView(R.layout.launcher);
@@ -54,27 +54,17 @@ public final class Launcher extends Activity {
 		int actionBarHeight = ThemeUtil.getActionBarHeight(this);
 		this.sharedPreferencesDAO = SharedPreferencesDAO.getInstance(getPreferences(0));
 		this.viewController = new ViewController((ViewFlipper) findViewById(R.id.vsLauncher));
-		if (Build.VERSION.SDK_INT >= 21) {
-			drawable = getDrawable(R.drawable.ic_launcher);
-		} else {
-			drawable = getResources().getDrawable(R.drawable.ic_launcher);
-		}
-		if (drawable == null) {
-			throw new NullPointerException("Could not load ic_launcher drawable.");
-		}
+		// if (Build.VERSION.SDK_INT >= 21) {
+		// 	drawable = getDrawable(R.drawable.ic_launcher);
+		// } else {
+		// 	drawable = getResources().getDrawable(R.drawable.ic_launcher);
+		// }
+		// if (drawable == null) {
+		// 	throw new NullPointerException("Could not load ic_launcher drawable.");
+		// }
 		this.drawerListAdapter = new DrawerListAdapter(this,drawable);
 		this.drawerController = new DrawerController(this.drawerListAdapter,this.sharedPreferencesDAO);
-		new LinearLayoutSectionsObserver(this,actionBarHeight,(ListView) findViewById(R.id.lvApplications),
-				(LinearLayout) findViewById(R.id.lvApplicationsSections),this.drawerListAdapter);
-		ListView listView = (ListView) findViewById(R.id.lvApplications);
 		AbsListView gridView = (AbsListView) findViewById(R.id.gvApplications);
-		adjustActionBarOffset(listView,actionBarHeight);
-		registerForContextMenu(listView);
-		listView.setAdapter((ListAdapter) this.drawerListAdapter);
-		listView.setOnItemClickListener(new AdapterViewOnItemClickListener(this));
-		listView.setOnCreateContextMenuListener(
-				new AbsListViewOnCreateContextMenuListener(getPackageManager(),this.drawerController,this.drawerListAdapter,
-						null,this));
 		adjustActionBarOffset(gridView,actionBarHeight);
 		registerForContextMenu(gridView);
 		gridView.setAdapter((ListAdapter) this.drawerListAdapter);
@@ -82,7 +72,11 @@ public final class Launcher extends Activity {
 		gridView.setOnCreateContextMenuListener(
 				new AbsListViewOnCreateContextMenuListener(getPackageManager(),this.drawerController,this.drawerListAdapter,
 						null,this));
-		adjustActionBarOffset(findViewById(R.id.lvApplicationsSections),actionBarHeight);
+
+		if (getActionBar() != null) {
+			getActionBar().setDisplayShowHomeEnabled(false);   // 不显示应用图标
+			getActionBar().setIcon(null);                      // 去掉图标
+		}
 	}
 
 	@Override // android.app.Activity
@@ -170,9 +164,9 @@ public final class Launcher extends Activity {
 		if (this.drawerListAdapter != null) {
 			menu.findItem(R.id.abm_show_hidden).setChecked(this.drawerListAdapter.isShowingHiddenApps());
 		}
-		if (this.viewController != null) {
-			menu.findItem(R.id.abm_grid_toggle).setChecked(this.viewController.getCurrentDetailIndex() == ViewController.GRID_ID);
-		}
+		// if (this.viewController != null) {
+		// 	menu.findItem(R.id.abm_grid_toggle).setChecked(this.viewController.getCurrentDetailIndex() == ViewController.GRID_ID);
+		// }
 		return true;
 	}
 
@@ -182,18 +176,18 @@ public final class Launcher extends Activity {
 			return false;
 		}
 		switch (menuItem.getItemId()) {
-			case R.id.abm_grid_toggle /* 2130837505 */:
-				ViewController viewController2 = this.viewController;
-				if (viewController2 == null || this.sharedPreferencesDAO == null) {
-					return super.onOptionsItemSelected(menuItem);
-				}
-				boolean z = viewController2.getCurrentDetailIndex() == ViewController.GRID_ID;
-				menuItem.setChecked(!z);
-				int i = !z ? ViewController.GRID_ID : ViewController.LIST_ID;
-				this.viewController.setCurrentDetailIndex(i);
-				this.sharedPreferencesDAO.putInt(ViewController.KEY_DRAWER_LAYOUT,i);
-				this.viewController.showDetail();
-				return true;
+			// case R.id.abm_grid_toggle /* 2130837505 */:
+			// 	ViewController viewController2 = this.viewController;
+			// 	if (viewController2 == null || this.sharedPreferencesDAO == null) {
+			// 		return super.onOptionsItemSelected(menuItem);
+			// 	}
+			// 	boolean z = viewController2.getCurrentDetailIndex() == ViewController.GRID_ID;
+			// 	menuItem.setChecked(!z);
+			// 	int i = !z ? ViewController.GRID_ID : ViewController.LIST_ID;
+			// 	this.viewController.setCurrentDetailIndex(i);
+			// 	this.sharedPreferencesDAO.putInt(ViewController.KEY_DRAWER_LAYOUT,i);
+			// 	this.viewController.showDetail();
+			// 	return true;
 			case R.id.abm_show_hidden /* 2130837509 */:
 				DrawerListAdapter drawerListAdapter = this.drawerListAdapter;
 				if (drawerListAdapter == null) {

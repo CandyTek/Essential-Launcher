@@ -49,10 +49,10 @@ public final class ViewController {
 		} else {
 			this.currentDetailIndex = GRID_ID;
 		}
-		Menu menu = this.actionBarMenu;
-		if (menu != null) {
-			menu.findItem(R.id.abm_grid_toggle).setChecked(i == ViewController.GRID_ID);
-		}
+		// Menu menu = this.actionBarMenu;
+		// if (menu != null) {
+		// 	menu.findItem(R.id.abm_grid_toggle).setChecked(i == ViewController.GRID_ID);
+		// }
 	}
 
 	public void setActionBar(ActionBar actionBar) {

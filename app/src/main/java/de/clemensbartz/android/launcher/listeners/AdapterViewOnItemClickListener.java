@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import de.clemensbartz.android.launcher.models.ApplicationModel;
 import de.clemensbartz.android.launcher.util.IntentUtil;
@@ -34,7 +35,12 @@ public final class AdapterViewOnItemClickListener implements AdapterView.OnItemC
 			intent.setFlags(268435456);
 			intent.setComponent(componentName);
 			if (IntentUtil.isCallable(this.context.getPackageManager(),intent)) {
-				this.context.startActivity(intent);
+				try {
+					this.context.startActivity(intent);
+				}
+				catch (Exception e) {
+					Toast.makeText(context.getApplicationContext(),"出错"+e.getMessage(),Toast.LENGTH_SHORT).show();
+				}
 			}
 		}
 	}

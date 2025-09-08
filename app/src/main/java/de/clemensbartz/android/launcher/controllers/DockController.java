@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -68,7 +69,12 @@ public final class DockController {
 										Intent newAppMainIntent = IntentUtil.newAppMainIntent(applicationModel.packageName,
 												applicationModel.className);
 										if (IntentUtil.isCallable(context.getPackageManager(),newAppMainIntent)) {
-											context.startActivity(newAppMainIntent);
+											try {
+												context.startActivity(newAppMainIntent);
+											}
+											catch (Exception e) {
+												Toast.makeText(context.getApplicationContext(),"出错"+e.getMessage(),Toast.LENGTH_SHORT).show();
+											}
 										}
 									}
 								}

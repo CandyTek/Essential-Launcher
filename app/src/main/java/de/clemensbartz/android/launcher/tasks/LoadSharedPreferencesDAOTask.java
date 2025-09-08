@@ -51,10 +51,10 @@ public final class LoadSharedPreferencesDAOTask extends AsyncTask<Integer,Intege
 		if (viewController != null) {
 			viewController.setCurrentDetailIndex(loadModelAsyncTaskResult.drawerLayout);
 		}
-		Launcher launcher = this.launcherWeakReference.get();
-		if (launcher != null && (actionBarMenuItem = launcher.getActionBarMenuItem(R.id.abm_grid_toggle)) != null) {
-			actionBarMenuItem.setChecked(loadModelAsyncTaskResult.drawerLayout == 1);
-		}
+		// Launcher launcher = this.launcherWeakReference.get();
+		// if (launcher != null && (actionBarMenuItem = launcher.getActionBarMenuItem(R.id.abm_grid_toggle)) != null) {
+		// 	actionBarMenuItem.setChecked(loadModelAsyncTaskResult.drawerLayout == 1);
+		// }
 		WidgetController widgetController = this.widgetControllerWeakReference.get();
 		if (widgetController != null) {
 			if (loadModelAsyncTaskResult.selectedWidget > -1) {

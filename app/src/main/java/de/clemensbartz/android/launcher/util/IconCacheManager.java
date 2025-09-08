@@ -20,8 +20,9 @@ public class IconCacheManager {
         this.context = context.getApplicationContext();
         
         // 计算缓存大小：假设每个图标平均10KB，缓存500个图标约5MB
-        int maxCacheSize = (int) (Runtime.getRuntime().maxMemory() / 1024 / 8); // 1/8内存用于图标缓存
-        maxCacheSize = Math.min(maxCacheSize, 5 * 1024); // 最大5MB
+        // int maxCacheSize = (int) (Runtime.getRuntime().maxMemory() / 1024 / 8); // 1/8内存用于图标缓存
+        // maxCacheSize = Math.min(maxCacheSize, 5 * 1024); // 最大
+        int maxCacheSize =  20 * 1024; // 最大
         
         this.iconCache = new LruCache<String, byte[]>(maxCacheSize) {
             @Override

@@ -229,9 +229,9 @@ public final class DrawerListAdapter extends ArrayAdapter<ApplicationModel> impl
 		if (id == R.id.gvApplications) {
 			return ITEM_RESOURCE_IDS[0];
 		}
-		if (id != R.id.lvApplications) {
-			return -1;
-		}
+		// if (id != R.id.lvApplications) {
+		// 	return -1;
+		// }
 		return ITEM_RESOURCE_IDS[1];
 	}
 

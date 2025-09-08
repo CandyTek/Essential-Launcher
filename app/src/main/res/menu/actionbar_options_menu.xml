@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:icon="@drawable/ic_search"
+        android:icon="@android:drawable/ic_menu_search"
         android:id="@+id/app_bar_search"
         android:title="@string/search"
         android:showAsAction="collapseActionView|always"
         android:actionViewClass="android.widget.SearchView"/>
-    <item
-        android:id="@+id/abm_grid_toggle"
-        android:title="@string/showAsGrid"
-        android:checkable="true"/>
+<!--     <item -->
+<!--         android:id="@+id/abm_grid_toggle" -->
+<!--         android:title="@string/showAsGrid" -->
+<!--         android:checkable="true"/> -->
     <item
         android:id="@+id/abm_show_all_dock_icons"
         android:title="@string/showAllDockIcons"
