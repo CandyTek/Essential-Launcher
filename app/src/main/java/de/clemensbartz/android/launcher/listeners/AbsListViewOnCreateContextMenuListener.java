@@ -7,7 +7,6 @@ import android.content.pm.ShortcutInfo;
 import android.os.Build;
 import android.view.ContextMenu;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -54,6 +53,9 @@ public final class AbsListViewOnCreateContextMenuListener implements View.OnCrea
 			return;
 		}
 		final ApplicationModel item = drawerListAdapter.getItem(((AdapterView.AdapterContextMenuInfo) contextMenuInfo).position);
+		if (item == null) {
+			return;
+		}
 		contextMenu.setHeaderTitle(item.label);
 		if (Build.VERSION.SDK_INT >= 25) {
 			LauncherApps launcherApps = this.launcherAppsWeakReference.get();

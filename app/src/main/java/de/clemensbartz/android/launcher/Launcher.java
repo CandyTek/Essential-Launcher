@@ -1,12 +1,14 @@
 package de.clemensbartz.android.launcher;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -26,6 +28,7 @@ import de.clemensbartz.android.launcher.controllers.ViewController;
 import de.clemensbartz.android.launcher.daos.SharedPreferencesDAO;
 import de.clemensbartz.android.launcher.listeners.AbsListViewOnCreateContextMenuListener;
 import de.clemensbartz.android.launcher.listeners.AdapterViewOnItemClickListener;
+import de.clemensbartz.android.launcher.listeners.DrawerLetterKeyListener;
 import de.clemensbartz.android.launcher.listeners.SearchViewOnActionExpandListener;
 import de.clemensbartz.android.launcher.observers.LinearLayoutSectionsObserver;
 import de.clemensbartz.android.launcher.receivers.PackageChangedBroadcastReceiver;
@@ -38,6 +41,7 @@ import de.clemensbartz.android.launcher.util.ThemeUtil;
 
 /* loaded from: classes.dex */
 public final class Launcher extends Activity {
+    private static final String TAG = Launcher.class.getName();
 	private SharedPreferencesDAO sharedPreferencesDAO = null;
 	private DrawerController drawerController = null;
 	private ViewController viewController = null;
@@ -77,11 +81,17 @@ public final class Launcher extends Activity {
 			getActionBar().setDisplayShowHomeEnabled(false);   // 不显示应用图标
 			getActionBar().setIcon(null);                      // 去掉图标
 		}
-	}
-
-	@Override // android.app.Activity
-	protected void onStart() {
-		super.onStart();
+		// 启动时可以做一些初始化操作
+		try {
+			Intent intent = new Intent();
+			ComponentName componentName = new ComponentName("com.dazzle.videoconferencesystem",
+					"com.dazzle.videoconferencesystem.service.SideMenuBarService");
+			intent.setComponent(componentName);
+			startService(intent);
+		}
+		catch (Exception e) {
+			Log.e(TAG,"onCreate: 初始化操作失败");
+		}
 		new LoadSharedPreferencesDAOTask(this,this.sharedPreferencesDAO,this.viewController,null).execute(new Integer[0]);
 		PackageChangedBroadcastReceiver packageChangedBroadcastReceiver = PackageChangedBroadcastReceiver.getInstance();
 		packageChangedBroadcastReceiver.setDockController(null);
@@ -96,6 +106,14 @@ public final class Launcher extends Activity {
 				this.drawerListAdapter);
 		LoadDrawerListAdapterTask.setRunningTask(loadDrawerListAdapterTask);
 		loadDrawerListAdapterTask.executeOnExecutor(AsyncTask.SERIAL_EXECUTOR,new Integer[0]);
+		gridView.setOnKeyListener(
+				new DrawerLetterKeyListener(gridView, drawerListAdapter)
+		);
+	}
+    
+	@Override // android.app.Activity
+	protected void onStart() {
+		super.onStart();
 	}
 
 	@Override // android.app.Activity
@@ -120,7 +138,12 @@ public final class Launcher extends Activity {
 
 	@Override // android.app.Activity
 	protected void onDestroy() {
-		try {
+        try {
+            findViewById(R.id.gvApplications).setOnKeyListener(null);
+        }
+        catch (Exception e) {
+        }
+        try {
 			unregisterReceiver(PackageChangedBroadcastReceiver.getInstance());
 		}
 		catch (Exception unused) {

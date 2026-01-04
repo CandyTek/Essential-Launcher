@@ -37,6 +37,9 @@ public final class DrawerListAdapter extends ArrayAdapter<ApplicationModel> impl
 	private static final String FILTER_SEPARATOR = " ";
 	private static final int[] ITEM_RESOURCE_IDS = {R.layout.grid_drawer_item,R.layout.list_drawer_item};
 	private final Drawable defaultDrawable;
+	public List<ApplicationModel> getItems() {
+		return filteredList;
+	}
 	private final List<ApplicationModel> filteredList;
 	private final Map<String,Integer> indexMap;
 	private final Locale locale;

@@ -108,6 +108,7 @@ public final class LoadDrawerListAdapterTask extends AsyncTask<Integer,Integer,I
 					applicationModel.packageName = launcherActivityInfo.getComponentName().getPackageName();
 					applicationModel.label = getLabel(launcherActivityInfo.getLabel(),launcherActivityInfo.getName());
 					applicationModel.hidden = drawerController.isHiding(applicationModel);
+                    ApplicationModel.setPinyinFirst(applicationModel);
 					arrayList.add(applicationModel);
 				}
 			}
@@ -127,6 +128,7 @@ public final class LoadDrawerListAdapterTask extends AsyncTask<Integer,Integer,I
 				applicationModel.className = resolveInfo.activityInfo.name;
 				applicationModel.label = getLabel(resolveInfo.loadLabel(packageManager),resolveInfo.activityInfo.name);
 				applicationModel.hidden = drawerController.isHiding(applicationModel);
+                ApplicationModel.setPinyinFirst(applicationModel);
 				arrayList.add(applicationModel);
 			}
 		}

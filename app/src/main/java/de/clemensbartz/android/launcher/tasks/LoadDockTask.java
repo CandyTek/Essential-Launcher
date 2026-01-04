@@ -56,6 +56,7 @@ public final class LoadDockTask extends AsyncTask<Integer,LoadDockTask.LoadDockT
 					applicationModel.className = stringTokenizer.nextToken();
 					LoadDockTaskProgress loadDockTaskProgress = new LoadDockTaskProgress();
 					loadDockTaskProgress.index = i;
+					ApplicationModel.setPinyinFirst(applicationModel);
 					loadDockTaskProgress.applicationModel = applicationModel;
 					publishProgress(loadDockTaskProgress);
 				}
